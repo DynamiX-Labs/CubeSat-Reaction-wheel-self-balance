@@ -2,12 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { Send, User, Bot, X, MessageSquare, Loader2, Minimize2, Zap, ExternalLink } from 'lucide-react';
 import { useChatStore } from '../store/chatStore';
 import { useNavigate } from 'react-router-dom';
-import { clsx } from 'clsx';
-import { twMerge } from 'tailwind-merge';
-
-function cn(...inputs: (string | undefined | null | false)[]) {
-    return twMerge(clsx(inputs));
-}
+import { cn } from '../utils/cn';
 
 export default function CubeSatChat() {
     const { isOpen, messages, isLoading, toggleChat, sendMessage, closeChat } = useChatStore();

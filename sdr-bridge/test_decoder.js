@@ -137,11 +137,26 @@ function parseTelemetry(msg) {
     const zM = msg.match(/Z:\s*(-?\d+)/);
     const tM = msg.match(/T:\s*(-?\d+\.?\d*)/);
     const hM = msg.match(/H:\s*(-?\d+\.?\d*)/);
-    if (xM) pkt.x = parseInt(xM[1], 10);
-    if (yM) pkt.y = parseInt(yM[1], 10);
-    if (zM) pkt.z = parseInt(zM[1], 10);
-    if (tM) pkt.temp = parseFloat(tM[1]);
-    if (hM) pkt.humidity = parseFloat(hM[1]);
+    if (xM) {
+        const xVal = parseInt(xM[1], 10);
+        pkt.x = !isNaN(xVal) ? xVal : 0;
+    }
+    if (yM) {
+        const yVal = parseInt(yM[1], 10);
+        pkt.y = !isNaN(yVal) ? yVal : 0;
+    }
+    if (zM) {
+        const zVal = parseInt(zM[1], 10);
+        pkt.z = !isNaN(zVal) ? zVal : 0;
+    }
+    if (tM) {
+        const tVal = parseFloat(tM[1]);
+        pkt.temp = !isNaN(tVal) ? tVal : 0;
+    }
+    if (hM) {
+        const hVal = parseFloat(hM[1]);
+        pkt.humidity = !isNaN(hVal) ? hVal : 0;
+    }
     if (xM && yM && zM && tM && hM) pkt.valid = true;
     return pkt;
 }
