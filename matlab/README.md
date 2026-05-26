@@ -71,5 +71,4 @@ Running `CubeSat_Main.m` produces a 4-panel figure:
 
 ## Authors
 
-- ARYA M G C — System Architecture & Embedded HIL Integration
-
+@ARYA-mgc — System Architecture & Embedded HIL Integration

@@ -1,5 +1,5 @@
-// Hardcoded API Key (Ideally should be in .env)
-const GROQ_API_KEY = "Guys put your api key here!!!";
+// Load API Key from environment variables
+const GROQ_API_KEY = import.meta.env.VITE_GROQ_API_KEY || "";
 
 export interface ChatMessage {
     role: 'user' | 'assistant' | 'system';
@@ -11,6 +11,12 @@ export interface ChatMessage {
  * Using the Llama 3 8B model for speed and efficiency.
  */
 export async function sendMessageToGroq(history: ChatMessage[]): Promise<string> {
+    // Validate API key is configured
+    if (!GROQ_API_KEY) {
+        console.warn("GROQ_API_KEY not configured. Please set VITE_GROQ_API_KEY in your environment.");
+        return "⚠️ API Configuration Missing. Please set VITE_GROQ_API_KEY environment variable to enable Mission Control AI.";
+    }
+
     // System prompt to define the AI's persona
     const systemPrompt: ChatMessage = {
         role: 'system',

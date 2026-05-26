@@ -79,13 +79,15 @@ function CubeSat() {
       </mesh>
 
       {/* Gold foil panels */}
-      {[
-        [0, 0.0505, 0],
-        [0, -0.0505, 0],
-        [0.0505, 0, 0],
-        [-0.0505, 0, 0],
-      ].map((pos, i) => (
-        <mesh key={i} position={pos as [number, number, number]} castShadow>
+      {(
+        [
+          [0, 0.0505, 0],
+          [0, -0.0505, 0],
+          [0.0505, 0, 0],
+          [-0.0505, 0, 0],
+        ] as const
+      ).map((pos, i) => (
+        <mesh key={i} position={pos} castShadow>
           <boxGeometry args={i < 2 ? [0.095, 0.001, 0.095] : [0.001, 0.095, 0.095]} />
           <meshStandardMaterial color="#c4a000" metalness={0.95} roughness={0.1} />
         </mesh>
