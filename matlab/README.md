@@ -65,7 +65,8 @@ Running `CubeSat_Main.m` produces a 4-panel figure:
 
 ## Requirements
 
-- MATLAB R2020b or later
+
+- MATLAB R2026a or later
 - Simulink (only for `.slx` model; MATLAB scripts work standalone)
 - No additional toolboxes required
 
